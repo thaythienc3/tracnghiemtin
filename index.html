@@ -590,13 +590,26 @@ input:focus {
 }
 
 #resultPage {
-
-  max-width:650px;
-
-  margin:60px auto;
-
+  max-width:760px;
+  margin:38px auto;
   display:none;
+  position:relative;
+  overflow:hidden;
+  padding:clamp(24px,5vw,48px);
+  border:1px solid #dbeafe;
+  border-radius:28px;
+  background:radial-gradient(circle at top left,#fff7cc 0,transparent 32%),linear-gradient(145deg,#ffffff,#eff6ff 58%,#f0fdf4);
+  box-shadow:0 24px 70px rgba(30,64,175,.18);
 }
+.result-confetti {text-align:center;font-size:clamp(24px,4vw,36px);letter-spacing:5px;margin-bottom:8px;animation:celebrate 1.8s ease-in-out infinite alternate;}
+.result-icon {width:104px;height:104px;border-radius:32px;margin:auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;font-size:55px;box-shadow:0 12px 30px #f59e0b44;border:3px solid #fff;}
+.result-title {text-align:center;font-size:clamp(23px,4vw,34px);font-weight:1000;margin-top:20px;letter-spacing:.3px;color:#123a78;text-shadow:0 2px 0 #fff;}
+.result-subtitle {text-align:center;margin:10px 0 22px;color:#0f766e;font-weight:800;font-size:16px;}
+.result-student {text-align:center;color:#123a78;margin:20px auto 8px;padding:18px 16px;max-width:620px;border-radius:20px;background:linear-gradient(110deg,#dbeafe,#fef3c7,#dcfce7);border:2px solid #bfdbfe;font-size:clamp(18px,3vw,25px);font-weight:1000;line-height:1.5;overflow-wrap:anywhere;box-shadow:inset 0 1px 0 #fff,0 8px 22px #1d4ed812;}
+.score {text-align:center;font-size:clamp(58px,9vw,78px);font-weight:1000;color:#047857;margin:12px;text-shadow:0 3px 0 #d1fae5;}
+.result-box {text-align:center;padding:20px 12px;background:#ffffffd9;border:1px solid #dbeafe;border-radius:18px;box-shadow:0 6px 18px #1e40af0d;}
+@keyframes celebrate {from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-5px) rotate(1deg)}}
+
 
 .result-icon {
 
@@ -837,6 +850,18 @@ button:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(20,70,150,
 .anti-cheat-toast p { line-height:1.6; }
 .anti-cheat-toast button { width:auto; margin-bottom:24px; border:0; border-radius:12px; background:linear-gradient(135deg,#1459c7,#4385f5); color:white; font-weight:800; cursor:pointer; }
 .cheat-result-note { margin:16px auto; max-width:800px; padding:18px 22px; border-radius:16px; background:linear-gradient(135deg,#fff0f0,#ffe0e0); color:#a31414; font-weight:800; box-shadow:0 8px 25px #c6282822; }
+
+/* Kết quả nổi bật - override cuối để đảm bảo giao diện nhất quán */
+#resultPage{max-width:760px;margin:38px auto;display:none;position:relative;overflow:hidden;padding:clamp(24px,5vw,48px);border:1px solid #dbeafe;border-radius:28px;background:radial-gradient(circle at top left,#fff7cc 0,transparent 32%),linear-gradient(145deg,#fff,#eff6ff 58%,#f0fdf4);box-shadow:0 24px 70px rgba(30,64,175,.18)}
+.result-confetti{text-align:center;font-size:clamp(24px,4vw,36px);letter-spacing:5px;margin-bottom:8px;animation:celebrate 1.8s ease-in-out infinite alternate}
+.result-icon{width:104px;height:104px;border-radius:32px;margin:auto;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#fef3c7,#fde68a);color:#92400e;font-size:55px;font-weight:900;box-shadow:0 12px 30px #f59e0b44;border:3px solid #fff}
+.result-title{text-align:center;font-size:clamp(23px,4vw,34px);font-weight:1000;margin-top:20px;color:#123a78}
+.result-subtitle{text-align:center;margin:10px 0 22px;color:#0f766e;font-weight:800;font-size:16px}
+.result-student{text-align:center;color:#123a78;margin:20px auto 8px;padding:18px 16px;max-width:620px;border-radius:20px;background:linear-gradient(110deg,#dbeafe,#fef3c7,#dcfce7);border:2px solid #bfdbfe;font-size:clamp(18px,3vw,25px);font-weight:1000;line-height:1.5;overflow-wrap:anywhere;box-shadow:inset 0 1px 0 #fff,0 8px 22px #1d4ed812}
+.score{text-align:center;font-size:clamp(58px,9vw,78px);font-weight:1000;color:#047857;margin:12px;text-shadow:0 3px 0 #d1fae5}
+.result-box{text-align:center;padding:20px 12px;background:#ffffffd9;border:1px solid #dbeafe;border-radius:18px;box-shadow:0 6px 18px #1e40af0d}
+@keyframes celebrate{from{transform:translateY(0) rotate(-1deg)}to{transform:translateY(-5px) rotate(1deg)}}
+
 </style>
 
 </head>
@@ -1100,14 +1125,10 @@ button:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(20,70,150,
   id="resultPage"
   class="card">
 
-  <div class="result-icon">
-    ✓
-  </div>
-
-
-  <div class="result-title">
-    ĐÃ NỘP BÀI THÀNH CÔNG
-  </div>
+  <div class="result-confetti" aria-hidden="true">🎉 ✨ 🏆 ✨ 🎉</div>
+  <div class="result-icon" aria-hidden="true">🏆</div>
+  <div class="result-title">HOÀN THÀNH BÀI KIỂM TRA!</div>
+  <div class="result-subtitle">🌟 Chúc mừng em đã hoàn tất bài làm 🌟</div>
 
 
   <div
@@ -1144,9 +1165,7 @@ button:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(20,70,150,
         0
       </div>
 
-      <div class="result-label">
-        Câu đúng
-      </div>
+      <div class="result-label">✅ Câu đúng</div>
 
     </div>
 
@@ -1159,9 +1178,7 @@ button:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(20,70,150,
         0
       </div>
 
-      <div class="result-label">
-        Câu sai
-      </div>
+      <div class="result-label">💡 Câu sai</div>
 
     </div>
 
@@ -1174,9 +1191,7 @@ button:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(20,70,150,
         0
       </div>
 
-      <div class="result-label">
-        Chưa làm
-      </div>
+      <div class="result-label">📌 Chưa làm</div>
 
     </div>
 
@@ -1240,7 +1255,7 @@ button:hover { transform:translateY(-2px); box-shadow:0 8px 18px rgba(20,70,150,
  ********************************************************/
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbwDGhjGiI7GVcXAOc8WEGOfvMiTtRzzJdUF-YY8gPCi6ztL8o_259L7RCea2D8BIBN5/exec";
+  "https://script.google.com/macros/s/AKfycbxbWUY3DU7bCmC76gxyt9Njyu6pEUUdQZhhiKgcO-Suzk6YFzdviayJMD4rkg4eO6S9/exec";
 
 
 /********************************************************
@@ -1352,21 +1367,14 @@ function api(
       );
 
 
-      const timer =
-        setTimeout(
-          () => {
-
-            cleanup();
-
-            reject(
-              new Error(
-                "API timeout."
-              )
-            );
-
-          },
-          15000
-        );
+      // Apps Script có thể cần thêm thời gian khi khởi động lạnh
+      // hoặc lần đầu đọc Google Sheets. Cho phép tối đa 45 giây.
+      const timer = setTimeout(() => {
+        cleanup();
+        reject(new Error(
+          "API timeout sau 45 giây. Hãy kiểm tra URL /exec, quyền triển khai và mục Executions trong Apps Script."
+        ));
+      }, 45000);
 
 
       function cleanup() {
@@ -1404,15 +1412,14 @@ function api(
 
 
       script.onerror = () => {
-
         cleanup();
-
-        reject(
-          new Error(
-            "Không thể kết nối API."
-          )
-        );
+        reject(new Error(
+          "Không tải được phản hồi từ Apps Script. Kiểm tra URL /exec, quyền truy cập Web App và bản triển khai."
+        ));
       };
+
+      script.async = true;
+      query.set("_ts", String(Date.now()));
 
 
       script.src =
@@ -2571,15 +2578,7 @@ function showResult(
     )
     .textContent =
 
-      result.fullname +
-
-      " - Lớp " +
-
-      result.className +
-
-      " - Mã đề " +
-
-      result.paperCode;
+      "🎓 " + result.fullname + "  |  🏫 LỚP " + result.className + "  |  📝 MÃ ĐỀ " + result.paperCode;
 
 
   document
