@@ -1,2875 +1,416 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>
-Kiểm tra trực tuyến - THPT Lê Duẩn
-</title>
-
-<style>
-
-* {
-  box-sizing:border-box;
-}
-
-body {
-  margin:0;
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  background:
-    linear-gradient(
-      135deg,
-      #eef5ff,
-      #f8fbff
-    );
-
-  color:#172033;
-
-  min-height:100vh;
-}
-
-.header {
-
-  background:
-    linear-gradient(
-      135deg,
-      #0b57d0,
-      #174ea6
-    );
-
-  color:white;
-
-  padding:18px 25px;
-
-  box-shadow:
-    0 5px 20px
-    rgba(0,0,0,.15);
-}
-
-.header-inner {
-
-  max-width:1200px;
-
-  margin:auto;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-between;
-}
-
-.school-name {
-
-  font-size:22px;
-
-  font-weight:900;
-}
-
-.school-subtitle {
-
-  font-size:14px;
-
-  margin-top:5px;
-
-  opacity:.9;
-}
-
-.container {
-
-  width:
-    min(
-      1200px,
-      calc(100% - 30px)
-    );
-
-  margin:30px auto 60px;
-}
-
-.card {
-
-  background:white;
-
-  border-radius:20px;
-
-  padding:28px;
-
-  box-shadow:
-    0 12px 40px
-    rgba(30,70,120,.12);
-}
-
-#loginPage {
-
-  max-width:480px;
-
-  margin:70px auto;
-}
-
-.logo {
-
-  width:85px;
-
-  height:85px;
-
-  border-radius:50%;
-
-  background:
-    linear-gradient(
-      135deg,
-      #0b57d0,
-      #4285f4
-    );
-
-  color:white;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  margin:0 auto 20px;
-
-  font-size:34px;
-
-  font-weight:900;
-}
-
-.title {
-
-  text-align:center;
-
-  font-size:25px;
-
-  font-weight:900;
-
-  color:#123c7c;
-
-  margin-bottom:8px;
-}
-
-.description {
-
-  text-align:center;
-
-  color:#64748b;
-
-  margin-bottom:25px;
-}
-
-.form-group {
-
-  margin-bottom:17px;
-}
-
-label {
-
-  display:block;
-
-  font-weight:700;
-
-  margin-bottom:7px;
-}
-
-input {
-
-  width:100%;
-
-  padding:14px;
-
-  border:
-    2px solid #dbe3f0;
-
-  border-radius:12px;
-
-  font-size:16px;
-
-  outline:none;
-}
-
-input:focus {
-
-  border-color:#4285f4;
-
-  box-shadow:
-    0 0 0 4px
-    rgba(66,133,244,.12);
-}
-
-.btn {
-
-  border:0;
-
-  border-radius:12px;
-
-  padding:13px 20px;
-
-  font-size:16px;
-
-  font-weight:800;
-
-  cursor:pointer;
-}
-
-.btn-primary {
-
-  background:
-    linear-gradient(
-      135deg,
-      #0b57d0,
-      #4285f4
-    );
-
-  color:white;
-
-  width:100%;
-}
-
-.btn-secondary {
-
-  background:#edf2f7;
-
-  color:#334155;
-}
-
-.btn-danger {
-
-  background:#d93025;
-
-  color:white;
-
-  width:100%;
-}
-
-.btn:disabled {
-
-  opacity:.55;
-
-  cursor:not-allowed;
-}
-
-.message {
-
-  display:none;
-
-  padding:12px;
-
-  border-radius:10px;
-
-  margin-bottom:15px;
-
-  font-size:14px;
-}
-
-.message.error {
-
-  display:block;
-
-  background:#fee2e2;
-
-  color:#991b1b;
-}
-
-.exam-top {
-
-  display:grid;
-
-  grid-template-columns:
-    1fr auto auto;
-
-  gap:15px;
-
-  align-items:center;
-
-  margin-bottom:20px;
-}
-
-.student {
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-}
-
-.avatar {
-
-  width:48px;
-
-  height:48px;
-
-  border-radius:50%;
-
-  background:#e7f0ff;
-
-  color:#0b57d0;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  font-weight:900;
-}
-
-.student-name {
-
-  font-weight:900;
-}
-
-.student-class {
-
-  font-size:13px;
-
-  color:#64748b;
-
-  margin-top:3px;
-}
-
-.paper {
-
-  text-align:center;
-}
-
-.paper-label {
-
-  font-size:11px;
-
-  color:#64748b;
-}
-
-.paper-code {
-
-  font-weight:900;
-}
-
-.timer {
-
-  min-width:140px;
-
-  padding:11px 15px;
-
-  border-radius:14px;
-
-  background:#f1f5f9;
-
-  text-align:center;
-
-  font-size:23px;
-
-  font-weight:900;
-
-  font-variant-numeric:
-    tabular-nums;
-}
-
-.timer.warning {
-
-  background:#fff4e5;
-
-  color:#b45309;
-}
-
-.timer.danger {
-
-  background:#fee2e2;
-
-  color:#b91c1c;
-}
-
-.exam-layout {
-
-  display:grid;
-
-  grid-template-columns:
-    minmax(0,1fr)
-    280px;
-
-  gap:22px;
-}
-
-.question-number {
-
-  display:inline-flex;
-
-  padding:7px 13px;
-
-  border-radius:10px;
-
-  background:#e8f0fe;
-
-  color:#0b57d0;
-
-  font-weight:900;
-
-  margin-bottom:17px;
-}
-
-.question-text {
-
-  font-size:21px;
-
-  line-height:1.6;
-
-  font-weight:700;
-
-  margin-bottom:25px;
-}
-
-.options {
-
-  display:flex;
-
-  flex-direction:column;
-
-  gap:13px;
-}
-
-.option {
-
-  display:flex;
-
-  gap:13px;
-
-  padding:17px;
-
-  border:
-    2px solid #e2e8f0;
-
-  border-radius:14px;
-
-  cursor:pointer;
-
-  transition:.2s;
-}
-
-.option:hover {
-
-  border-color:#8ab4f8;
-
-  background:#f8fbff;
-}
-
-.option.selected {
-
-  border-color:#0b57d0;
-
-  background:#edf4ff;
-}
-
-.option-letter {
-
-  min-width:35px;
-
-  height:35px;
-
-  border-radius:50%;
-
-  background:#f1f5f9;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  font-weight:900;
-}
-
-.option.selected
-.option-letter {
-
-  background:#0b57d0;
-
-  color:white;
-}
-
-.option-text {
-
-  line-height:1.55;
-
-  padding-top:5px;
-}
-
-.navigation {
-
-  display:flex;
-
-  justify-content:space-between;
-
-  gap:12px;
-
-  margin-top:25px;
-}
-
-.save-status {
-
-  min-height:20px;
-
-  margin-top:12px;
-
-  font-size:13px;
-
-  color:#64748b;
-}
-
-.save-status.success {
-
-  color:#137333;
-}
-
-.save-status.error {
-
-  color:#b91c1c;
-}
-
-.question-map {
-
-  position:sticky;
-
-  top:20px;
-}
-
-.map-title {
-
-  font-weight:900;
-
-  margin-bottom:14px;
-}
-
-.map-grid {
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(5,1fr);
-
-  gap:7px;
-}
-
-.map-button {
-
-  aspect-ratio:1;
-
-  border:
-    1px solid #dce3ed;
-
-  border-radius:8px;
-
-  background:white;
-
-  cursor:pointer;
-
-  font-weight:700;
-}
-
-.map-button.current {
-
-  background:#0b57d0;
-
-  color:white;
-}
-
-.map-button.answered {
-
-  background:#d9fbe8;
-
-  color:#137333;
-}
-
-#resultPage {
-
-  max-width:650px;
-
-  margin:60px auto;
-
-  display:none;
-}
-
-.result-icon {
-
-  width:90px;
-
-  height:90px;
-
-  border-radius:50%;
-
-  margin:auto;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:center;
-
-  background:#dcfce7;
-
-  color:#15803d;
-
-  font-size:42px;
-
-  font-weight:900;
-}
-
-.result-title {
-
-  text-align:center;
-
-  font-size:28px;
-
-  font-weight:900;
-
-  margin-top:20px;
-}
-
-.result-student {
-
-  text-align:center;
-
-  color:#64748b;
-
-  margin-top:8px;
-}
-
-.score {
-
-  text-align:center;
-
-  font-size:60px;
-
-  font-weight:900;
-
-  color:#0b57d0;
-
-  margin:15px;
-}
-
-.result-grid {
-
-  display:grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap:12px;
-
-  margin-top:25px;
-}
-
-.result-box {
-
-  text-align:center;
-
-  padding:17px;
-
-  background:#f8fafc;
-
-  border-radius:12px;
-}
-
-.result-value {
-
-  font-size:24px;
-
-  font-weight:900;
-}
-
-.result-label {
-
-  font-size:13px;
-
-  color:#64748b;
-
-  margin-top:5px;
-}
-
-.footer {
-
-  text-align:center;
-
-  color:#718096;
-
-  font-size:13px;
-
-  padding:25px;
-}
-
-#loading {
-
-  position:fixed;
-
-  inset:0;
-
-  background:
-    rgba(255,255,255,.9);
-
-  display:none;
-
-  align-items:center;
-
-  justify-content:center;
-
-  z-index:9999;
-}
-
-.loading-box {
-
-  background:white;
-
-  padding:30px;
-
-  border-radius:18px;
-
-  text-align:center;
-
-  box-shadow:
-    0 15px 50px
-    rgba(0,0,0,.15);
-}
-
-.spinner {
-
-  width:45px;
-
-  height:45px;
-
-  border:
-    5px solid #e2e8f0;
-
-  border-top-color:#0b57d0;
-
-  border-radius:50%;
-
-  margin:auto auto 15px;
-
-  animation:
-    spin 1s linear infinite;
-}
-
-@keyframes spin {
-
-  to {
-    transform:rotate(360deg);
-  }
-}
-
-@media(max-width:850px) {
-
-  .exam-layout {
-
-    grid-template-columns:1fr;
-  }
-
-  .question-map {
-
-    position:static;
-  }
-
-  .exam-top {
-
-    grid-template-columns:1fr;
-  }
-
-  .timer {
-
-    width:100%;
-  }
-}
-
-@media(max-width:600px) {
-
-  .container {
-
-    width:
-      calc(100% - 18px);
-
-    margin-top:15px;
-  }
-
-  .card {
-
-    padding:18px;
-  }
-
-  .question-text {
-
-    font-size:18px;
-  }
-
-  .navigation {
-
-    flex-direction:column;
-  }
-
-  .navigation .btn {
-
-    width:100%;
-  }
-
-  .result-grid {
-
-    grid-template-columns:1fr;
-  }
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trường THPT Lê Duẩn</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; }
+
+        /* Container Các Màn Hình */
+        .page { display: none; padding: 20px; max-width: 1000px; margin: 0 auto; }
+        .active-page { display: block; }
+
+        /* Màn Hình Đăng Nhập */
+        .login-card {
+            background: white; border-radius: 12px; padding: 40px; max-width: 400px;
+            margin: 80px auto; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center;
+        }
+        .login-card h2 { color: #0056b3; margin-bottom: 24px; font-size: 22px; }
+        .form-group { margin-bottom: 18px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+        .form-group input { width: 100%; padding: 10px 14px; border: 1px solid #ccc; border-radius: 6px; outline: none; }
+        .btn {
+            background: #0056b3; color: white; border: none; padding: 12px 20px;
+            width: 100%; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .btn:hover { background: #004085; }
+
+        /* Header Bài Thi */
+        .exam-header {
+            background: white; padding: 16px 24px; border-radius: 8px; margin-bottom: 20px;
+            display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .timer-box { font-size: 20px; font-weight: bold; color: #28a745; background: #e8f5e9; padding: 8px 16px; border-radius: 6px; }
+        .timer-warning { color: #dc3545; background: #ffebee; animation: blink 1s infinite; }
+
+        /* Nội Dung Khung Thi */
+        .exam-body { display: grid; grid-template-columns: 1fr 280px; gap: 20px; }
+        .question-card { background: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .question-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
+        .option-item {
+            display: flex; align-items: center; border: 1px solid #e0e0e0; border-radius: 6px;
+            padding: 12px 16px; margin-bottom: 10px; cursor: pointer; transition: 0.2s;
+        }
+        .option-item:hover { background: #f8f9fa; border-color: #0056b3; }
+        .option-item input { margin-right: 12px; }
+
+        /* Sơ Đồ Câu Hỏi (Map) */
+        .map-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .map-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
+        .map-btn {
+            padding: 10px; border: 1px solid #ccc; background: white; border-radius: 4px;
+            cursor: pointer; font-weight: bold; font-size: 14px;
+        }
+        .map-btn.answered { background: #28a745; color: white; border-color: #28a745; }
+        .map-btn.current { border: 2px solid #0056b3; }
+
+        /* Màn Hình Kết Quả */
+        .result-card { background: white; padding: 40px; border-radius: 12px; text-align: center; max-width: 500px; margin: 40px auto; }
+        .score-display { font-size: 48px; font-weight: bold; color: #28a745; margin: 20px 0; }
+
+        /* Modal Cảnh Báo Giám Sát */
+        .warning-modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.75); display: flex; justify-content: center; align-items: center; z-index: 9999;
+        }
+        .warning-modal-box {
+            background: #ffffff; border-radius: 12px; padding: 28px; max-width: 440px; width: 90%;
+            text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3); border-top: 6px solid #dc3545;
+        }
+        .warning-modal-box h3 { color: #dc3545; margin-bottom: 14px; font-size: 22px; }
+        .warning-modal-box p { font-size: 15px; color: #333; margin-bottom: 22px; line-height: 1.6; }
+        .warning-modal-btn {
+            background: #dc3545; color: white; border: none; padding: 12px 28px; border-radius: 6px;
+            font-weight: bold; cursor: pointer; font-size: 15px; transition: 0.2s;
+        }
+        .warning-modal-btn:hover { background: #c82333; }
+
+        @keyframes blink { 50% { opacity: 0.6; } }
+    </style>
 </head>
-
-
 <body>
 
-
-<header class="header">
-
-  <div class="header-inner">
-
-    <div>
-
-      <div class="school-name">
-        TRƯỜNG THPT LÊ DUẨN
-      </div>
-
-      <div class="school-subtitle">
-        Hệ thống kiểm tra trực tuyến Môn Tin Học của Thầy Thiện
-      </div>
-
+    <!-- 1. MÀN HÌNH ĐĂNG NHẬP -->
+    <div id="loginPage" class="page active-page">
+        <div class="login-card">
+            <h2>HỆ THỐNG THI TRẮC NGHIỆM</h2>
+            <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Trường THPT Lê Duẩn</p>
+            <div class="form-group">
+                <label>Tài khoản học sinh:</label>
+                <input type="text" id="usernameInput" placeholder="Nhập mã số học sinh">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu:</label>
+                <input type="password" id="passwordInput" placeholder="Nhập mật khẩu">
+            </div>
+            <button class="btn" onclick="handleLogin()">ĐĂNG NHẬP THI</button>
+        </div>
     </div>
 
-  </div>
-
-</header>
-
-
-<main class="container">
-
-
-<!-- LOGIN -->
-
-<section
-  id="loginPage"
-  class="card">
-
-  <div class="logo">
-    LD
-  </div>
-
-  <div class="title">
-    ĐĂNG NHẬP LÀM BÀI
-  </div>
-
-  <div class="description">
-    Vui lòng sử dụng tài khoản được Thầy Thiện cung cấp
-  </div>
-
-  <div
-    id="loginMessage"
-    class="message">
-  </div>
-
-  <div class="form-group">
-
-    <label>
-      Tài khoản
-    </label>
-
-    <input
-      id="username"
-      autocomplete="username"
-      placeholder="Nhập tài khoản">
-
-  </div>
-
-  <div class="form-group">
-
-    <label>
-      Mật khẩu
-    </label>
-
-    <input
-      id="password"
-      type="password"
-      autocomplete="current-password"
-      placeholder="Nhập mật khẩu">
-
-  </div>
-
-  <button
-    id="loginButton"
-    class="btn btn-primary"
-    onclick="login()">
-
-    ĐĂNG NHẬP
-
-  </button>
-
-</section>
-
-
-<!-- EXAM -->
-
-<section
-  id="examPage"
-  style="display:none;">
-
-
-  <div class="exam-top card">
-
-
-    <div class="student">
-
-      <div
-        id="avatar"
-        class="avatar">
-        HS
-      </div>
-
-      <div>
-
-        <div
-          id="studentName"
-          class="student-name">
+    <!-- 2. MÀN HÌNH LÀM BÀI THI -->
+    <div id="examPage" class="page">
+        <div class="exam-header">
+            <div>
+                <h3 id="studentInfoText">Học sinh: Loading...</h3>
+                <span id="examCodeText" style="color: #666; font-size: 13px;">Mã đề: Loading...</span>
+            </div>
+            <div id="timerDisplay" class="timer-box">00:00</div>
         </div>
 
-        <div
-          id="studentClass"
-          class="student-class">
+        <div class="exam-body">
+            <div class="question-card">
+                <div id="questionTitle" class="question-title">Đang tải câu hỏi...</div>
+                <div id="optionsContainer"></div>
+                <div style="margin-top: 20px; display: flex; justify-content: space-between;">
+                    <button class="btn" style="width: auto; background: #6c757d;" onclick="prevQuestion()">Câu Trước</button>
+                    <button class="btn" style="width: auto;" onclick="nextQuestion()">Câu Tiếp</button>
+                </div>
+            </div>
+
+            <div class="map-card">
+                <h4>Danh Sách Câu Hỏi</h4>
+                <div id="questionMap" class="map-grid"></div>
+                <button class="btn" style="background: #28a745; margin-top: 20px;" onclick="confirmSubmit()">NỘP BÀI THI</button>
+            </div>
         </div>
-
-      </div>
-
     </div>
 
-
-    <div class="paper">
-
-      <div class="paper-label">
-        MÃ ĐỀ
-      </div>
-
-      <div
-        id="paperCode"
-        class="paper-code">
-      </div>
-
+    <!-- 3. MÀN HÌNH KẾT QUẢ -->
+    <div id="resultPage" class="page">
+        <div class="result-card">
+            <h2>KẾT QUẢ BÀI THI</h2>
+            <p id="resultReasonText" style="color: #666; font-size: 14px; margin-top: 5px;"></p>
+            <div id="scoreDisplay" class="score-display">0.0</div>
+            <p id="resultDetailText">Đúng: 0/0 câu</p>
+            <button class="btn" style="margin-top: 24px;" onclick="location.reload()">Trở về trang chính</button>
+        </div>
     </div>
 
-
-    <div
-      id="timer"
-      class="timer">
-
-      00:00
-
+    <!-- 4. MODAL CẢNH BẢO VI PHẠM (GIÁM SÁT) -->
+    <div id="warningModal" class="warning-modal-overlay" style="display: none;">
+        <div class="warning-modal-box">
+            <h3>⚠️ CẢNH BÁO GIÁM SÁT</h3>
+            <p id="warningMessage">Bạn vừa rời khỏi màn hình làm bài!<br><b>Nếu vi phạm lần nữa, hệ thống sẽ tự động nộp bài!</b></p>
+            <button class="warning-modal-btn" onclick="closeWarningModal()">Tôi đã hiểu</button>
+        </div>
     </div>
 
-  </div>
-
-
-  <div class="exam-layout">
-
-
-    <div class="card">
-
-
-      <div
-        id="questionNumber"
-        class="question-number">
-      </div>
-
-
-      <div
-        id="questionText"
-        class="question-text">
-      </div>
-
-
-      <div
-        id="options"
-        class="options">
-      </div>
-
-
-      <div
-        id="saveStatus"
-        class="save-status">
-      </div>
-
-
-      <div class="navigation">
-
-        <button
-          id="prevButton"
-          class="btn btn-secondary"
-          onclick="previousQuestion()">
-
-          ← Câu trước
-
-        </button>
-
-
-        <button
-          id="nextButton"
-          class="btn btn-primary"
-          onclick="nextQuestion()">
-
-          Câu tiếp →
-
-        </button>
-
-      </div>
-
-
-    </div>
-
-
-    <aside class="card question-map">
-
-      <div class="map-title">
-        Danh sách câu hỏi
-      </div>
-
-
-      <div
-        id="questionMap"
-        class="map-grid">
-      </div>
-
-
-      <div
-        style="
-        margin-top:18px;
-        font-size:13px;
-        color:#64748b;
-        line-height:1.7;">
-
-        🟦 Câu hiện tại<br>
-
-        🟩 Đã trả lời<br>
-
-        ⬜ Chưa trả lời
-
-      </div>
-
-
-      <button
-        class="btn btn-danger"
-        style="margin-top:20px;"
-        onclick="confirmSubmit()">
-
-        NỘP BÀI
-
-      </button>
-
-    </aside>
-
-
-  </div>
-
-</section>
-
-
-<!-- RESULT -->
-
-<section
-  id="resultPage"
-  class="card">
-
-  <div class="result-icon">
-    ✓
-  </div>
-
-
-  <div class="result-title">
-    ĐÃ NỘP BÀI THÀNH CÔNG
-  </div>
-
-
-  <div
-    id="resultStudent"
-    class="result-student">
-  </div>
-
-
-  <div
-    id="resultScore"
-    class="score">
-    0.00
-  </div>
-
-
-  <div
-    style="
-    text-align:center;
-    color:#64748b;">
-
-    Điểm
-
-  </div>
-
-
-  <div class="result-grid">
-
-
-    <div class="result-box">
-
-      <div
-        id="resultCorrect"
-        class="result-value">
-        0
-      </div>
-
-      <div class="result-label">
-        Câu đúng
-      </div>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <div
-        id="resultWrong"
-        class="result-value">
-        0
-      </div>
-
-      <div class="result-label">
-        Câu sai
-      </div>
-
-    </div>
-
-
-    <div class="result-box">
-
-      <div
-        id="resultUnanswered"
-        class="result-value">
-        0
-      </div>
-
-      <div class="result-label">
-        Chưa làm
-      </div>
-
-    </div>
-
-
-  </div>
-
-
-  <div
-    style="
-    text-align:center;
-    margin-top:25px;
-    color:#64748b;">
-
-    Thời gian làm:
-
-    <strong
-      id="resultDuration">
-      --
-    </strong>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<footer class="footer">
-
-  Cổng kiểm tra trực tuyến
-  - Trường THPT Lê Duẩn
-
-  <br>
-
-  Bản quyền thuộc về Thầy Thiện
-
-</footer>
-
-
-<div id="loading">
-
-  <div class="loading-box">
-
-    <div class="spinner"></div>
-
-    <div id="loadingText">
-      Đang xử lý...
-    </div>
-
-  </div>
-
-</div>
-
-
-<script>
-
-/********************************************************
- * QUAN TRỌNG
- *
- * THAY URL NÀY BẰNG URL /exec CỦA APPS SCRIPT
- ********************************************************/
-
-const API_URL =
-  "https://script.google.com/macros/s/AKfycbx0YVhrtREqPfS6op62exCcuqH1XR_vWT4EzPQRJHZFgfpJd5F3bmTGRnwWeKDHAots/exec";
-
-
-/********************************************************
- * STATE
- ********************************************************/
-
-const state = {
-
-  username:null,
-
-  password:null,
-
-  token:null,
-
-  questions:[],
-
-  currentIndex:0,
-
-  expiresAt:0,
-
-  timer:null,
-
-  heartbeat:null,
-
-  submitted:false
-};
-
-
-/********************************************************
- * JSONP CLIENT
- ********************************************************/
-
-function api(
-  action,
-  params = {}
-) {
-
-  return new Promise(
-    (resolve, reject) => {
-
-
-      if (
-        !API_URL ||
-        API_URL.includes(
-          "DAN_URL"
-        )
-      ) {
-
-        reject(
-          new Error(
-            "Chưa cấu hình API_URL."
-          )
-        );
-
-        return;
-      }
-
-
-      const callbackName =
-        "jsonp_" +
-        Date.now() +
-        "_" +
-        Math.floor(
-          Math.random() * 100000
-        );
-
-
-      const script =
-        document.createElement(
-          "script"
-        );
-
-
-      const query =
-        new URLSearchParams();
-
-
-      query.set(
-        "action",
-        action
-      );
-
-
-      query.set(
-        "callback",
-        callbackName
-      );
-
-
-      Object.keys(
-        params
-      ).forEach(
-        key => {
-
-          if (
-            params[key] !==
-            undefined &&
-            params[key] !==
-            null
-          ) {
-
-            query.set(
-              key,
-              params[key]
-            );
-          }
-
-        }
-      );
-
-
-      const timer =
-        setTimeout(
-          () => {
-
-            cleanup();
-
-            reject(
-              new Error(
-                "API timeout."
-              )
-            );
-
-          },
-          15000
-        );
-
-
-      function cleanup() {
-
-        clearTimeout(
-          timer
-        );
-
-        delete window[
-          callbackName
-        ];
-
-        if (
-          script.parentNode
-        ) {
-
-          script.parentNode
-            .removeChild(
-              script
-            );
-        }
-      }
-
-
-      window[
-        callbackName
-      ] = data => {
-
-        cleanup();
-
-        resolve(
-          data
-        );
-      };
-
-
-      script.onerror = () => {
-
-        cleanup();
-
-        reject(
-          new Error(
-            "Không thể kết nối API."
-          )
-        );
-      };
-
-
-      script.src =
-        API_URL +
-        "?" +
-        query.toString();
-
-
-      document.body.appendChild(
-        script
-      );
-
-    }
-  );
-}
-
-
-/********************************************************
- * LOGIN
- ********************************************************/
-
-async function login() {
-
-  const username =
-    document
-      .getElementById(
-        "username"
-      )
-      .value
-      .trim();
-
-
-  const password =
-    document
-      .getElementById(
-        "password"
-      )
-      .value
-      .trim();
-
-
-  if (
-    !username ||
-    !password
-  ) {
-
-    showLoginError(
-      "Vui lòng nhập tài khoản và mật khẩu."
-    );
-
-    return;
-  }
-
-
-  const button =
-    document
-      .getElementById(
-        "loginButton"
-      );
-
-
-  button.disabled = true;
-
-
-  showLoading(
-    "Đang xác thực tài khoản..."
-  );
-
-
-  try {
-
-    const result =
-      await api(
-        "login",
-        {
-          username:
-            username,
-
-          password:
-            password
-        }
-      );
-
-
-    if (
-      !result.success
-    ) {
-
-      hideLoading();
-
-      showLoginError(
-        result.message
-      );
-
-      return;
-    }
-
-
-    state.username =
-      username;
-
-
-    state.password =
-      password;
-
-
-    /*
-     * Có bài đang làm.
-     */
-
-    if (
-      result.resumed &&
-      result.session
-    ) {
-
-      await initExam(
-        result.session
-      );
-
-      return;
-    }
-
-
-    showLoading(
-      "Đang tạo bài kiểm tra..."
-    );
-
-
-    const start =
-      await api(
-        "start",
-        {
-          username:
-            username,
-
-          password:
-            password
-        }
-      );
-
-
-    if (
-      !start.success
-    ) {
-
-      hideLoading();
-
-      showLoginError(
-        start.message
-      );
-
-      return;
-    }
-
-
-    await initExam(
-      start.session
-    );
-
-
-  } catch (error) {
-
-    hideLoading();
-
-    showLoginError(
-      error.message
-    );
-
-    console.error(
-      error
-    );
-
-
-  } finally {
-
-    button.disabled =
-      false;
-  }
-}
-
-
-/********************************************************
- * INIT EXAM
- ********************************************************/
-
-async function initExam(
-  session
-) {
-
-  state.token =
-    session.sessionToken;
-
-
-  state.expiresAt =
-    Number(
-      session.expiresAt
-    );
-
-
-  document
-    .getElementById(
-      "studentName"
-    )
-    .textContent =
-      session.fullname;
-
-
-  document
-    .getElementById(
-      "studentClass"
-    )
-    .textContent =
-      "Lớp " +
-      session.className;
-
-
-  document
-    .getElementById(
-      "paperCode"
-    )
-    .textContent =
-      session.paperCode;
-
-
-  document
-    .getElementById(
-      "avatar"
-    )
-    .textContent =
-      initials(
-        session.fullname
-      );
-
-
-  showLoading(
-    "Đang tải đề..."
-  );
-
-
-  const exam =
-    await api(
-      "exam",
-      {
-        token:
-          state.token
-      }
-    );
-
-
-  hideLoading();
-
-
-  if (
-    !exam.success
-  ) {
-
-    if (
-      exam.expired &&
-      exam.result
-    ) {
-
-      showResult(
-        exam.result
-      );
-
-      return;
-    }
-
-
-    alert(
-      exam.message ||
-      "Không thể tải đề."
-    );
-
-    return;
-  }
-
-
-  state.questions =
-    exam.questions;
-
-
-  state.currentIndex =
-    0;
-
-
-  document
-    .getElementById(
-      "loginPage"
-    )
-    .style.display =
-      "none";
-
-
-  document
-    .getElementById(
-      "examPage"
-    )
-    .style.display =
-      "block";
-
-
-  renderQuestion();
-
-
-  startTimer();
-
-
-  startHeartbeat();
-
-
-  setupLogs();
-}
-
-
-/********************************************************
- * QUESTION
- ********************************************************/
-
-function renderQuestion() {
-
-  const q =
-    state.questions[
-      state.currentIndex
-    ];
-
-
-  if (!q) {
-    return;
-  }
-
-
-  document
-    .getElementById(
-      "questionNumber"
-    )
-    .textContent =
-      "Câu " +
-      (state.currentIndex + 1);
-
-
-  document
-    .getElementById(
-      "questionText"
-    )
-    .textContent =
-      q.question;
-
-
-  const box =
-    document
-      .getElementById(
-        "options"
-      );
-
-
-  box.innerHTML = "";
-
-
-  [
-    "A",
-    "B",
-    "C",
-    "D"
-  ].forEach(
-    (letter,index) => {
-
-
-      const div =
-        document
-          .createElement(
-            "div"
-          );
-
-
-      div.className =
-        "option";
-
-
-      if (
-        q.answer ===
-        letter
-      ) {
-
-        div.classList.add(
-          "selected"
-        );
-      }
-
-
-      const l =
-        document
-          .createElement(
-            "div"
-          );
-
-
-      l.className =
-        "option-letter";
-
-
-      l.textContent =
-        letter;
-
-
-      const text =
-        document
-          .createElement(
-            "div"
-          );
-
-
-      text.className =
-        "option-text";
-
-
-      text.textContent =
-        q.options[
-          index
-        ];
-
-
-      div.appendChild(
-        l
-      );
-
-
-      div.appendChild(
-        text
-      );
-
-
-      div.onclick =
-        () =>
-          selectAnswer(
-            letter
-          );
-
-
-      box.appendChild(
-        div
-      );
-
-    }
-  );
-
-
-  document
-    .getElementById(
-      "prevButton"
-    )
-    .disabled =
-      state.currentIndex === 0;
-
-
-  document
-    .getElementById(
-      "nextButton"
-    )
-    .textContent =
-
-      state.currentIndex ===
-      state.questions.length - 1
-
-        ? "Nộp bài"
-
-        : "Câu tiếp →";
-
-
-  document
-    .getElementById(
-      "saveStatus"
-    )
-    .textContent =
-
-      q.answer
-
-        ? "Đã chọn đáp án " +
-          q.answer
-
-        : "Chưa chọn đáp án";
-
-
-  renderMap();
-}
-
-
-/********************************************************
- * ANSWER
- ********************************************************/
-
-async function selectAnswer(
-  letter
-) {
-
-  if (
-    state.submitted
-  ) {
-    return;
-  }
-
-
-  const q =
-    state.questions[
-      state.currentIndex
-    ];
-
-
-  q.answer =
-    letter;
-
-
-  renderQuestion();
-
-
-  document
-    .getElementById(
-      "saveStatus"
-    )
-    .textContent =
-      "Đang lưu...";
-
-
-  try {
-
-    const result =
-      await api(
-        "answer",
-        {
-          token:
-            state.token,
-
-          questionId:
-            q.id,
-
-          answer:
-            letter
-        }
-      );
-
-
-    if (
-      result.success
-    ) {
-
-      document
-        .getElementById(
-          "saveStatus"
-        )
-        .textContent =
-          "✓ Đã lưu đáp án " +
-          letter;
-
-
-      document
-        .getElementById(
-          "saveStatus"
-        )
-        .className =
-          "save-status success";
-
-
-    } else if (
-      result.expired
-    ) {
-
-      showResult(
-        result.result
-      );
-
-
-    } else {
-
-      document
-        .getElementById(
-          "saveStatus"
-        )
-        .textContent =
-          result.message ||
-          "Không lưu được.";
-
-
-      document
-        .getElementById(
-          "saveStatus"
-        )
-        .className =
-          "save-status error";
-    }
-
-
-  } catch (error) {
-
-    document
-      .getElementById(
-        "saveStatus"
-      )
-      .textContent =
-        "⚠ Mất kết nối tạm thời.";
-
-
-    document
-      .getElementById(
-        "saveStatus"
-      )
-      .className =
-        "save-status error";
-  }
-}
-
-
-/********************************************************
- * NAVIGATION
- ********************************************************/
-
-function previousQuestion() {
-
-  if (
-    state.currentIndex > 0
-  ) {
-
-    state.currentIndex--;
-
-    renderQuestion();
-  }
-}
-
-
-function nextQuestion() {
-
-  if (
-    state.currentIndex <
-    state.questions.length - 1
-  ) {
-
-    state.currentIndex++;
-
-    renderQuestion();
-
-  } else {
-
-    confirmSubmit();
-  }
-}
-
-
-function goToQuestion(
-  index
-) {
-
-  state.currentIndex =
-    index;
-
-  renderQuestion();
-}
-
-
-/********************************************************
- * MAP
- ********************************************************/
-
-function renderMap() {
-
-  const map =
-    document
-      .getElementById(
-        "questionMap"
-      );
-
-
-  map.innerHTML = "";
-
-
-  state.questions
-    .forEach(
-      (q,index) => {
-
-
-        const button =
-          document
-            .createElement(
-              "button"
-            );
-
-
-        button.className =
-          "map-button";
-
-
-        if (
-          index ===
-          state.currentIndex
-        ) {
-
-          button.classList.add(
-            "current"
-          );
+    <script>
+        // CẤU HÌNH API - THAY URL TRIỂN KHAI APPS SCRIPT CỦA BẠN VÀO ĐÂY
+        const API_URL = "https://script.google.com/macros/s/AKfycbysnN1nXLJ-UoMraWYVsce6JWdnRfhf8ncHv9_jgVCgRTc7iMZGPjoNDjCLcfLpiqB3/exec";
+
+        let state = {
+            token: null,
+            questions: [],
+            answers: {},
+            currentIndex: 0,
+            expiresAt: 0,
+            isFinished: false
+        };
+
+        let timerInterval = null;
+        let heartbeatInterval = null;
+        let cheatCount = 0; // Đếm số lần rời màn hình
+        let isModalShowing = false;
+
+        // Gọi API sử dụng JSONP chống rào cản CORS trên GitHub Pages
+        function api(action, params = {}, callback) {
+            const callbackName = 'jsonp_cb_' + Math.round(100000 * Math.random());
+            params.action = action;
+            params.callback = callbackName;
+
+            const queryString = Object.keys(params)
+                .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(params[key]))
+                .join('&');
+
+            const script = document.createElement('script');
+            script.src = API_URL + '?' + queryString;
+
+            window[callbackName] = function(data) {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                if (callback) callback(data);
+            };
+
+            script.onerror = function() {
+                delete window[callbackName];
+                document.body.removeChild(script);
+                alert("Không thể kết nối đến máy chủ API.");
+            };
+
+            document.body.appendChild(script);
         }
 
-
-        if (
-          q.answer
-        ) {
-
-          button.classList.add(
-            "answered"
-          );
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+            document.getElementById(pageId).classList.add('active-page');
         }
 
+        // ĐĂNG NHẬP
+        function handleLogin() {
+            const u = document.getElementById('usernameInput').value.trim();
+            const p = document.getElementById('passwordInput').value.trim();
 
-        button.textContent =
-          index + 1;
+            if (!u || !p) return alert("Vui lòng nhập đầy đủ tài khoản và mật khẩu!");
 
+            api('login', { username: u, password: p }, function(res) {
+                if (!res.success) return alert(res.message);
 
-        button.onclick =
-          () =>
-            goToQuestion(
-              index
-            );
-
-
-        map.appendChild(
-          button
-        );
-
-      }
-    );
-}
-
-
-/********************************************************
- * TIMER
- ********************************************************/
-
-function startTimer() {
-
-  clearInterval(
-    state.timer
-  );
-
-
-  updateTimer();
-
-
-  state.timer =
-    setInterval(
-      updateTimer,
-      1000
-    );
-}
-
-
-function updateTimer() {
-
-  const remaining =
-    Math.max(
-      0,
-
-      Math.floor(
-        (
-          state.expiresAt -
-          Date.now()
-        ) / 1000
-      )
-    );
-
-
-  const minutes =
-    Math.floor(
-      remaining / 60
-    );
-
-
-  const seconds =
-    remaining % 60;
-
-
-  const timer =
-    document
-      .getElementById(
-        "timer"
-      );
-
-
-  timer.textContent =
-    String(minutes)
-      .padStart(
-        2,
-        "0"
-      ) +
-
-    ":" +
-
-    String(seconds)
-      .padStart(
-        2,
-        "0"
-      );
-
-
-  timer.classList.remove(
-    "warning",
-    "danger"
-  );
-
-
-  if (
-    remaining <= 60
-  ) {
-
-    timer.classList.add(
-      "danger"
-    );
-
-  } else if (
-    remaining <= 300
-  ) {
-
-    timer.classList.add(
-      "warning"
-    );
-  }
-
-
-  if (
-    remaining <= 0
-  ) {
-
-    clearInterval(
-      state.timer
-    );
-
-    autoSubmit();
-  }
-}
-
-
-/********************************************************
- * HEARTBEAT
- ********************************************************/
-
-function startHeartbeat() {
-
-  clearInterval(
-    state.heartbeat
-  );
-
-
-  state.heartbeat =
-    setInterval(
-      async () => {
-
-        if (
-          !state.token ||
-          state.submitted
-        ) {
-          return;
+                if (res.resumed) {
+                    // Khôi phục bài thi dở dang
+                    state.token = res.data.token;
+                    startExamSession(res.data);
+                } else {
+                    // Bắt đầu thi mới
+                    api('start', { username: u }, function(startRes) {
+                        if (startRes.success) {
+                            state.token = startRes.data.token;
+                            startExamSession(startRes.data);
+                        } else {
+                            alert(startRes.message);
+                        }
+                    });
+                }
+            });
         }
 
+        // BẮT ĐẦU PHIÊN THI
+        function startExamSession(data) {
+            document.getElementById('studentInfoText').innerText = `Học sinh: ${data.studentName} (${data.className})`;
+            document.getElementById('examCodeText').innerText = `Mã đề: ${data.examCode}`;
+            state.expiresAt = data.expiresAt;
 
-        try {
-
-          const result =
-            await api(
-              "heartbeat",
-              {
-                token:
-                  state.token
-              }
-            );
-
-
-          if (
-            result.expired
-          ) {
-
-            showResult(
-              result.result
-            );
-          }
-
-        } catch (e) {
-
-          console.warn(
-            "Heartbeat:",
-            e
-          );
+            api('exam', { token: state.token }, function(res) {
+                if (res.success) {
+                    state.questions = res.data.questions;
+                    state.answers = res.data.answers || {};
+                    showPage('examPage');
+                    renderQuestionMap();
+                    displayQuestion(0);
+                    startTimer();
+                    startHeartbeat();
+                } else {
+                    alert(res.message);
+                }
+            });
         }
 
-      },
-      30000
-    );
-}
+        // HIỂN THỊ CÂU HỎI
+        function displayQuestion(index) {
+            if (index < 0 || index >= state.questions.length) return;
+            state.currentIndex = index;
 
+            const q = state.questions[index];
+            document.getElementById('questionTitle').innerText = `Câu ${index + 1}: ${q.question}`;
 
-/********************************************************
- * SUBMIT
- ********************************************************/
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
 
-function confirmSubmit() {
+            const keys = ['A', 'B', 'C', 'D'];
+            keys.forEach(key => {
+                if (q.options[key]) {
+                    const isChecked = state.answers[q.id] === key ? 'checked' : '';
+                    const optionHtml = `
+                        <label class="option-item">
+                            <input type="radio" name="option" value="${key}" ${isChecked} onchange="selectAnswer('${q.id}', '${key}')">
+                            <b>${key}.</b>&nbsp;${q.options[key]}
+                        </label>
+                    `;
+                    container.innerHTML += optionHtml;
+                }
+            });
 
-  const answered =
-    state.questions
-      .filter(
-        q => q.answer
-      )
-      .length;
-
-
-  const total =
-    state.questions.length;
-
-
-  const unanswered =
-    total -
-    answered;
-
-
-  let message =
-    "Bạn có chắc chắn muốn nộp bài không?\n\n" +
-
-    "Đã làm: " +
-    answered +
-    "/" +
-    total +
-    " câu.";
-
-
-  if (
-    unanswered > 0
-  ) {
-
-    message +=
-      "\nCòn " +
-      unanswered +
-      " câu chưa làm.";
-  }
-
-
-  if (
-    confirm(
-      message
-    )
-  ) {
-
-    submitExam();
-  }
-}
-
-
-async function submitExam() {
-
-  if (
-    state.submitted
-  ) {
-    return;
-  }
-
-
-  state.submitted =
-    true;
-
-
-  clearInterval(
-    state.timer
-  );
-
-
-  clearInterval(
-    state.heartbeat
-  );
-
-
-  showLoading(
-    "Đang nộp và chấm bài..."
-  );
-
-
-  try {
-
-    const result =
-      await api(
-        "submit",
-        {
-          token:
-            state.token
+            renderQuestionMap();
         }
-      );
 
-
-    hideLoading();
-
-
-    if (
-      result.success
-    ) {
-
-      showResult(
-        result.result
-      );
-
-    } else {
-
-      state.submitted =
-        false;
-
-
-      alert(
-        result.message
-      );
-    }
-
-
-  } catch (error) {
-
-    hideLoading();
-
-
-    state.submitted =
-      false;
-
-
-    alert(
-      "Không thể kết nối máy chủ."
-    );
-  }
-}
-
-
-async function autoSubmit() {
-
-  if (
-    state.submitted
-  ) {
-    return;
-  }
-
-
-  state.submitted =
-    true;
-
-
-  showLoading(
-    "Hết giờ. Đang tự động nộp bài..."
-  );
-
-
-  try {
-
-    const result =
-      await api(
-        "submit",
-        {
-          token:
-            state.token
+        function selectAnswer(qId, key) {
+            state.answers[qId] = key;
+            renderQuestionMap();
+            api('answer', { token: state.token, questionId: qId, selected: key });
         }
-      );
 
-
-    hideLoading();
-
-
-    if (
-      result.success
-    ) {
-
-      showResult(
-        result.result
-      );
-
-    } else {
-
-      state.submitted =
-        false;
-
-
-      setTimeout(
-        autoSubmit,
-        1500
-      );
-    }
-
-
-  } catch (e) {
-
-    hideLoading();
-
-
-    state.submitted =
-      false;
-
-
-    setTimeout(
-      autoSubmit,
-      1500
-    );
-  }
-}
-
-
-/********************************************************
- * RESULT
- ********************************************************/
-
-function showResult(
-  result
-) {
-
-  if (!result) {
-    return;
-  }
-
-
-  state.submitted =
-    true;
-
-
-  clearInterval(
-    state.timer
-  );
-
-
-  clearInterval(
-    state.heartbeat
-  );
-
-
-  document
-    .getElementById(
-      "examPage"
-    )
-    .style.display =
-      "none";
-
-
-  document
-    .getElementById(
-      "loginPage"
-    )
-    .style.display =
-      "none";
-
-
-  document
-    .getElementById(
-      "resultPage"
-    )
-    .style.display =
-      "block";
-
-
-  document
-    .getElementById(
-      "resultStudent"
-    )
-    .textContent =
-
-      result.fullname +
-
-      " - Lớp " +
-
-      result.className +
-
-      " - Mã đề " +
-
-      result.paperCode;
-
-
-  document
-    .getElementById(
-      "resultScore"
-    )
-    .textContent =
-
-      Number(
-        result.score
-      ).toFixed(2);
-
-
-  document
-    .getElementById(
-      "resultCorrect"
-    )
-    .textContent =
-      result.correct;
-
-
-  document
-    .getElementById(
-      "resultWrong"
-    )
-    .textContent =
-      result.wrong;
-
-
-  document
-    .getElementById(
-      "resultUnanswered"
-    )
-    .textContent =
-      result.unanswered;
-
-
-  document
-    .getElementById(
-      "resultDuration"
-    )
-    .textContent =
-      result.duration ||
-      "--";
-}
-
-
-/********************************************************
- * LOG
- ********************************************************/
-
-function setupLogs() {
-
-  document.addEventListener(
-    "visibilitychange",
-    () => {
-
-      if (
-        !state.token ||
-        state.submitted
-      ) {
-        return;
-      }
-
-
-      sendEvent(
-
-        document
-          .visibilityState ===
-          "hidden"
-
-          ? "TAB_HIDDEN"
-
-          : "TAB_VISIBLE",
-
-        document
-          .visibilityState ===
-          "hidden"
-
-          ? "Rời tab"
-
-          : "Quay lại"
-      );
-
-    }
-  );
-
-
-  window.addEventListener(
-    "blur",
-    () => {
-
-      if (
-        state.token &&
-        !state.submitted
-      ) {
-
-        sendEvent(
-          "WINDOW_BLUR",
-          "Mất focus"
-        );
-      }
-
-    }
-  );
-
-
-  window.addEventListener(
-    "focus",
-    () => {
-
-      if (
-        state.token &&
-        !state.submitted
-      ) {
-
-        sendEvent(
-          "WINDOW_FOCUS",
-          "Nhận focus"
-        );
-      }
-
-    }
-  );
-}
-
-
-function sendEvent(
-  name,
-  details
-) {
-
-  api(
-    "event",
-    {
-      token:
-        state.token,
-
-      name:
-        name,
-
-      details:
-        details
-    }
-  )
-  .catch(
-    () => {}
-  );
-}
-
-
-/********************************************************
- * UI
- ********************************************************/
-
-function showLoading(
-  text
-) {
-
-  document
-    .getElementById(
-      "loadingText"
-    )
-    .textContent =
-      text;
-
-
-  document
-    .getElementById(
-      "loading"
-    )
-    .style.display =
-      "flex";
-}
-
-
-function hideLoading() {
-
-  document
-    .getElementById(
-      "loading"
-    )
-    .style.display =
-      "none";
-}
-
-
-function showLoginError(
-  message
-) {
-
-  const box =
-    document
-      .getElementById(
-        "loginMessage"
-      );
-
-
-  box.textContent =
-    message;
-
-
-  box.className =
-    "message error";
-
-
-  box.style.display =
-    "block";
-}
-
-
-function initials(
-  name
-) {
-
-  const parts =
-    String(name)
-      .trim()
-      .split(/\s+/);
-
-
-  if (
-    parts.length === 1
-  ) {
-
-    return parts[0]
-      .substring(
-        0,
-        2
-      )
-      .toUpperCase();
-  }
-
-
-  return (
-    parts[0][0] +
-    parts[
-      parts.length - 1
-    ][0]
-  ).toUpperCase();
-}
-
-
-/********************************************************
- * ENTER LOGIN
- ********************************************************/
-
-document
-  .getElementById(
-    "password"
-  )
-  .addEventListener(
-    "keydown",
-    e => {
-
-      if (
-        e.key === "Enter"
-      ) {
-
-        login();
-      }
-
-    }
-  );
-
-
-/********************************************************
- * LOAD
- ********************************************************/
-
-window.addEventListener(
-  "load",
-  async () => {
-
-    try {
-
-      const result =
-        await api(
-          "ping"
-        );
-
-
-      if (
-        !result.success
-      ) {
-
-        console.warn(
-          "API chưa sẵn sàng."
-        );
-      }
-
-    } catch (e) {
-
-      console.warn(
-        "Không kết nối được API.",
-        e
-      );
-    }
-
-  }
-);
-
-</script>
-
+        function nextQuestion() { displayQuestion(state.currentIndex + 1); }
+        function prevQuestion() { displayQuestion(state.currentIndex - 1); }
+
+        function renderQuestionMap() {
+            const mapContainer = document.getElementById('questionMap');
+            mapContainer.innerHTML = '';
+
+            state.questions.forEach((q, idx) => {
+                const isAnswered = !!state.answers[q.id];
+                const isCurrent = idx === state.currentIndex;
+                let btnClass = 'map-btn';
+                if (isAnswered) btnClass += ' answered';
+                if (isCurrent) btnClass += ' current';
+
+                mapContainer.innerHTML += `<button class="${btnClass}" onclick="displayQuestion(${idx})">${idx + 1}</button>`;
+            });
+        }
+
+        // ĐỒNG HỒ ĐẾM NGƯỢC & HEARTBEAT
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            timerInterval = setInterval(() => {
+                const now = new Date().getTime();
+                const diff = state.expiresAt - now;
+
+                if (diff <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('timerDisplay').innerText = "00:00";
+                    alert("Đã hết giờ làm bài!");
+                    autoSubmitByTimeout();
+                    return;
+                }
+
+                const mins = Math.floor(diff / 60000);
+                const secs = Math.floor((diff % 60000) / 1000);
+                const timerEl = document.getElementById('timerDisplay');
+                timerEl.innerText = `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+
+                if (mins < 5) timerEl.classList.add('timer-warning');
+            }, 1000);
+        }
+
+        function startHeartbeat() {
+            heartbeatInterval = setInterval(() => {
+                if (state.isFinished) return clearInterval(heartbeatInterval);
+                api('heartbeat', { token: state.token }, function(res) {
+                    if (res.expired) autoSubmitByTimeout();
+                });
+            }, 30000); // Send heartbeat every 30s
+        }
+
+        // NỘP BÀI THI
+        function confirmSubmit() {
+            if (confirm("Bạn có chắc chắn muốn nộp bài thi không?")) {
+                submitExam('STUDENT_SUBMIT');
+            }
+        }
+
+        function autoSubmitByTimeout() {
+            submitExam('AUTO_TIMEOUT');
+        }
+
+        function autoSubmitByViolation() {
+            submitExam('FORCED_SUBMIT_VIOLATION');
+        }
+
+        function submitExam(reason) {
+            if (state.isFinished) return;
+            state.isFinished = true;
+            clearInterval(timerInterval);
+            clearInterval(heartbeatInterval);
+
+            api('submit', { token: state.token, reason: reason }, function(res) {
+                if (res.success) {
+                    document.getElementById('scoreDisplay').innerText = res.data.score;
+                    document.getElementById('resultDetailText').innerText = `Làm đúng: ${res.data.totalCorrect}/${res.data.totalQuestions} câu`;
+                    document.getElementById('resultReasonText').innerText = `Ghi chú: ${res.data.reason}`;
+                    showPage('resultPage');
+                } else {
+                    alert("Lỗi nộp bài: " + res.message);
+                }
+            });
+        }
+
+        // ----------------- TÍNH NĂNG CẢNH BÁO / GIÁM SÁT VI PHẠM -----------------
+
+        function closeWarningModal() {
+            document.getElementById('warningModal').style.display = 'none';
+            isModalShowing = false;
+        }
+
+        function handleCheatViolation(reasonDetail) {
+            // Chỉ kiểm tra khi học sinh đang làm bài thi
+            if (!state.token || state.isFinished || isModalShowing) return;
+
+            cheatCount++;
+
+            // Gửi nhật ký vi phạm về Google Sheet Logs
+            api('event', {
+                token: state.token,
+                type: 'VIOLATION_LEAVE_PAGE',
+                detail: `Vi phạm lần ${cheatCount}: ${reasonDetail}`
+            });
+
+            if (cheatCount === 1) {
+                // Lần 1: Hiển thị cảnh báo
+                isModalShowing = true;
+                document.getElementById('warningMessage').innerHTML = 
+                    `Bạn vừa rời khỏi màn hình làm bài (Lần 1/2)!<br><br>` +
+                    `<strong style="color: #dc3545;">LƯU Ý: Nếu vi phạm lần nữa, hệ thống sẽ TỰ ĐỘNG NỘP BÀI ngay lập tức!</strong>`;
+                document.getElementById('warningModal').style.display = 'flex';
+            } else if (cheatCount >= 2) {
+                // Lần 2: Tự động nộp bài cưỡng chế
+                alert("CẢNH BÁO: Bạn đã vi phạm rời màn hình lần thứ 2! Hệ thống tự động nộp bài thi.");
+                autoSubmitByViolation();
+            }
+        }
+
+        // Bắt sự kiện Chuyển tab / Ẩn trình duyệt
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                handleCheatViolation('Chuyển tab hoặc thu nhỏ trình duyệt');
+            }
+        });
+
+        // Bắt sự kiện Click ra ngoài cửa sổ thi
+        window.addEventListener('blur', function() {
+            handleCheatViolation('Mất tiêu điểm (Click ra ngoài cửa sổ làm bài)');
+        });
+    </script>
 </body>
-
 </html>
